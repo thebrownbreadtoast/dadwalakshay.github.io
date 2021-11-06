@@ -1,54 +1,49 @@
 <html>
     <head>
-        <title>About me</title>
+        <title>About me!</title>
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <meta content="utf-8" http-equiv="encoding">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="static/assets/css/main.css">
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <script src="static/assets/js/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@3.0.11"></script>
     </head>
-    <body onload="detectMode()">
-        <div class="container">
+
+    <body>
+        <div id="vueApp" class="container" v-cloak>
             <div class="row">
                 <div class="col-12">
                     <!-- Header starts -->
                     <div class="header-div row">
-                        <div class="button">
-                            <img class="mode-btn" src="static/assets/icons/dark-and-light.png" onclick="toggleMode()">
-                        </div>
+                        <theme-toggle-button v-model="isDark" />
                     </div>
                     <!-- Header ends -->
                     <!-- Profile summary starts -->
-                    <img class="border round-avatar" src="static/assets/images/profile_picture.jpg" alt="Akshay's Instagram Picture">
+                    <img class="border round-avatar" src="static/assets/images/profile_picture.jpg" alt="Mine Picture">
                     <div class="profile-summary col-10">
                         <div class="row">
                             <div class="profile-summary">
                                 <b><i>Hello there,</i></b>
                                 <br>
                                 <p>
-                                    I'm <i>Akshay Dadwal</i>, a Backend Web developer with
-                                    2 years of work experience with a
-                                    <a href="https://renewbuy.com" target="_blank">Fintech</a>
-                                    based in Gurgaon, India.
+                                    I'm <i>Akshay Dadwal</i>, a Software Engineer based
+                                    out of New Delhi(India).
                                     <br>
+                                    Having 3+ years of experience with Python, Django & RDBMS.
                                 </p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="profile-summary col-10">
                                 <p>
-                                    I'm all about Building backend solutions, Writing REST APIs,
-                                    Database Schemas, ETL Pipelines and Bash scripts.
-                                    <br>
-                                    You want someone with mentioned skills? Checkout my
-                                    resume <a href="https://drive.google.com/file/d/1Tff_nGLkrpzjj5QoZWuMX-4S51_-YMzy/view?usp=sharing" target="_blank">here</a>.
-                                </p>
-                                <p>
                                     I am interested in Network Security, Cloud Computing,
                                     Containerization Technologies, Latest trends in Tech
                                     and Video games. Feel free to contact me on any social media
                                     mentioned below.
+                                </p>
+                                <p>
+                                    If you need someone with relevant skills, go ahead and checkout my resume <a href="static/assets/files/resume.pdf" target="_blank">here</a>.
                                 </p>
                             </div>
                         </div>
@@ -56,36 +51,154 @@
                     <!-- Profile summary ends -->
                 </div>
             </div>
+            <footer class="fixed-bottom">
+                <footer-div v-model="isDark" />
+            </footer>
         </div>
+
+        <script type="text/javascript">
+            var app = Vue.createApp({
+                data() {
+                    return {
+                        isDark: false
+                    }
+                },
+                methods: {
+                    detectMode() {
+                        this.isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                    },
+                    renderMode() {
+                        var toggleModeIcon = document.getElementsByClassName('mode-btn')[0];
+
+                        if(this.isDark) {
+                            document.body.className = "dark-mode";
+
+                            toggleModeIcon.classList.add('light-icon');
+                            toggleModeIcon.classList.remove('dark-icon');
+                        }
+                        else {
+                            document.body.className = "light-mode";
+
+                            toggleModeIcon.classList.add('dark-icon');
+                            toggleModeIcon.classList.remove('light-icon');
+                        }
+                    },
+                },
+                mounted() {
+                    this.detectMode();
+
+                    this.renderMode();
+                },
+                updated() {
+                    this.renderMode();
+                },
+                components: ["theme-toggle-button", "footer-div", ]
+            })
+
+            app.component(
+                "theme-toggle-button",
+                {
+                    template: `
+                    <input class="mode-btn" type="image" src="static/assets/icons/dark-and-light.png"  @click="colorModeSetter"/>
+                    `,
+                    methods: {
+                        colorModeSetter() {
+                            console.log(!this.modelValue)
+                            this.$emit("update:modelValue", !this.modelValue);
+                        }
+                    },
+                    props: ["modelValue", ]
+                }
+            )
+
+            app.component(
+                "footer-icon",
+                {
+                    template: `
+                        <span class="icon-small">
+                            <a :href="hrefLink" target="_blank">
+                                <img :class="iconClass" :src="imgLink">
+                            </a>
+                        </span>
+                    `,
+                    props: ["hrefLink", "imgLink", "iconClass"]
+                }
+            )
+
+            app.component(
+                "footer-div",
+                {
+                    template: `
+                        <div style="text-align: center;">
+                            <b><i>Ping me @</i></b>
+                            <footer-icon
+                                v-for="(icon, idx) in iconsList"
+                                :key="idx"
+                                :hrefLink="icon.hrefLink"
+                                :imgLink="icon.imgLink"
+                                :iconClass="icon.iconClass"
+                            />
+                            <div class="small">
+                                Icons made by
+                                <a href="https://www.flaticon.com/authors/freepik" target="_blank" title="Freepik">Freepik</a>
+                            </div>
+                        </div>
+                    `,
+                    data() {
+                        return {
+                            icons: [
+                                {
+                                    hrefLink: "https://linkedin.com/in/dadwalakshay",
+                                    lightImgLink: "static/assets/icons/linkedin-light.svg",
+                                    darkImgLink: "static/assets/icons/linkedin-dark.svg",
+                                },
+                                {
+                                    hrefLink: "https://github.com/dadwalakshay",
+                                    lightImgLink: "static/assets/icons/github-light.svg",
+                                    darkImgLink: "static/assets/icons/github-dark.svg",
+                                },
+                                {
+                                    hrefLink: "mailto:akshayd00@outlook.com",
+                                    lightImgLink: "static/assets/icons/email-light.svg",
+                                    darkImgLink: "static/assets/icons/email-dark.svg",
+                                },
+                                {
+                                    hrefLink: "https://instagram.com/dadwal_akshay",
+                                    lightImgLink: "static/assets/icons/instagram-light.svg",
+                                    darkImgLink: "static/assets/icons/instagram-dark.svg",
+                                },
+                            ]
+                        }
+                    },
+                    components: ["footer-icon", ],
+                    props: ["modelValue", ],
+                    computed: {
+                        isDarkModeEnabled() {
+                            return this.modelValue;
+                        },
+                        iconsList() {
+                            var renderList = [];
+
+                            var iconClassValue = this.isDarkModeEnabled ? "light-icon" : "dark-icon";
+                            var imgLinkValue = this.isDarkModeEnabled ? "darkImgLink" : "lightImgLink"
+
+                            for(idx=0; idx<this.icons.length; idx++) {
+                                renderList.push(
+                                    {
+                                        "hrefLink": this.icons[idx].hrefLink,
+                                        "imgLink": this.icons[idx][imgLinkValue],
+                                        "iconClass": iconClassValue
+                                    }
+                                )
+                            }
+
+                            return renderList
+                        }
+                    },
+                }
+            )
+
+            app.mount("#vueApp")
+        </script>
     </body>
-    <footer>
-        <div class="footer-div">
-            <b><i>Ping me @</i></b>
-            <span class="icon-small">
-                <a href="https://linkedin.com/in/dadwalakshay" target="_blank">
-                    <img class="linkedin-icon" src="static/assets/icons/linkedin-light.svg">
-                </a>
-            </span>
-            <span class="icon-small">
-                <a href="https://github.com/dadwalakshay" target="_blank">
-                    <img class="github-icon" src="static/assets/icons/github-light.svg">
-                </a>
-            </span>
-            <span class="icon-small">
-                <a href="mailto:akshayd00@outlook.com" target="_blank">
-                    <img class="email-icon" src="static/assets/icons/email-light.svg">
-                </a>
-            </span>
-            <span class="icon-small">
-                <a href="https://instagram.com/dadwal_akshay" target="_blank">
-                    <img class="instagram-icon" src="static/assets/icons/instagram-light.svg">
-                </a>
-            </span>
-            <div class="small">
-                Icons made by
-                <a href="https://www.flaticon.com/authors/freepik" target="_blank" title="Freepik">Freepik</a>
-            </div>
-            <!-- Author attribution ends here -->
-        </div>
-    </footer> 
 </html>
