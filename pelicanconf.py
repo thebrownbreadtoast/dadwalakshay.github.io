@@ -18,9 +18,9 @@ AUTHOR_FEED_RSS = None
 
 DEFAULT_PAGINATION = 5
 
-LINKS = (("Blog", "category/blog.html"), ("Resume", "#"))
+LINKS = (("Blog", "/"), ("Resume", "#"))
 
-FOOTER_LINKS = (("", "/#"),)
+FOOTER_LINKS = (("", "#"),)
 
 HIDE_AUTHORS = False
 AUTHOR_URL = "pages/authors/{slug}.html"
