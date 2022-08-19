@@ -51,4 +51,5 @@ STATIC_PATHS = [
     "images",
 ]
 
-OUTPUT_PATH = "output/"
+# Generating static-site into docs/ to serve it using github-pages
+OUTPUT_PATH = "docs/"

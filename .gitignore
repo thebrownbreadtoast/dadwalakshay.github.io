@@ -1,6 +1,5 @@
 # Ignored directories
 env/
 __pycache__/
-output/
 
 # Ignored files
