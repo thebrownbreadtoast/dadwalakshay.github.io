@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "dadwalakshay.github.io"
+version = "1.0.0"
+description = "Static blog website"
+authors = ["dadwalakshay <akshayd00@outlook.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pelican = "^4.8.0"
+Markdown = "^3.4.1"
+black = "^22.6.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
