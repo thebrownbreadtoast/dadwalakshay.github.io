@@ -1,7 +1,7 @@
 AUTHOR = "Akshay Dadwal <akshayd00@outlook.com>"
 SITENAME = "blog"
 SITESUBTITLE = "A low effort blog"
-SITEURL = "https://dadwalakshay.github.io"
+SITEURL = ""
 
 PATH = "content"
 
@@ -52,4 +52,4 @@ STATIC_PATHS = [
 ]
 
 # Generating static-site into docs/ to serve it using github-pages
-OUTPUT_PATH = "docs/"
+OUTPUT_PATH = "."
