@@ -1,4 +1,7 @@
 # Ignored directories
 env/
-output/
+theme/
 __pycache__/
+
+# Ignored files
+*.html

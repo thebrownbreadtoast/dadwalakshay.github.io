@@ -39,3 +39,5 @@ TAG_URL = "tag/{slug}/"
 TAG_SAVE_AS = "tag/{slug}.html"
 
 AUTHOR_URL = "pages/authors/{slug}/"
+
+OUTPUT_PATH = "."
