@@ -3,7 +3,6 @@ slug: authors/akshay-dadwal
 tags: author
 status: published
 
----
 Hello World!  
 It's ***Akshay Dadwal***, I am a Backend Engineer with 4+ years of professional experience.
 

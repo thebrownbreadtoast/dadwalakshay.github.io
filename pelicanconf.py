@@ -1,6 +1,7 @@
 AUTHOR = "Akshay Dadwal <akshayd00@outlook.com>"
-SITENAME = "Blog"
-SITEURL = ""
+SITENAME = "blog"
+SITESUBTITLE = "A low effort blog"
+SITEURL = "https://dadwalakshay.github.io"
 
 PATH = "content"
 
@@ -17,11 +18,14 @@ AUTHOR_FEED_RSS = None
 
 DEFAULT_PAGINATION = 5
 
-# Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+LINKS = (("Blog", "/category/blog/"), ("Resume", "/#"))
 
-DISPLAY_PAGES_ON_MENU = True
-DISPLAY_CATEGORIES_ON_MENU = False
+FOOTER_LINKS = (("", "/#"),)
+
+HIDE_AUTHORS = False
+AUTHOR_URL = "pages/authors/{slug}/"
+
+SITEIMAGE = "images/profile_picture.jpeg width=200px height=200px"
 
 DELETE_OUTPUT_DIRECTORY = True
 
@@ -38,6 +42,13 @@ CATEGORY_SAVE_AS = "category/{slug}.html"
 TAG_URL = "tag/{slug}/"
 TAG_SAVE_AS = "tag/{slug}.html"
 
-AUTHOR_URL = "pages/authors/{slug}/"
+THEME = "themes/pelican-alchemy/alchemy"
+THEME_CSS_OVERRIDES = [
+    "theme/css/oldstyle.css",
+]
 
-OUTPUT_PATH = "."
+STATIC_PATHS = [
+    "images",
+]
+
+OUTPUT_PATH = "output/"
