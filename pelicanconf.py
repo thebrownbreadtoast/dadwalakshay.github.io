@@ -35,7 +35,6 @@ ARTICLE_SAVE_AS = "blog/{slug}.html"
 PAGE_URL = "pages/{slug}.html"
 PAGE_SAVE_AS = "pages/{slug}.html"
 
-CATEGORIES_URL = "category/blog.html"
 CATEGORY_URL = "category/{slug}.html"
 CATEGORY_SAVE_AS = "category/{slug}.html"
 

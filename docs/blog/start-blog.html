@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>  How to start Your own Blog! | blog
+</title>
+  <link rel="canonical" href="/blog/start-blog.html">
+
+
+  <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/theme/css/fontawesome.min.css">
+  <link rel="stylesheet" href="/theme/css/pygments/default.min.css">
+  <link rel="stylesheet" href="/theme/css/theme.css">
+  <link rel="stylesheet" href="/theme/css/oldstyle.css">
+
+  
+  <meta name="description" content="Pelican + GitHub pages is the perfect combination for minimal and static-site Blogs.">
+
+
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+<div class="row">
+    <div class="col-sm-4">
+      <a href="/">
+        <img class="img-fluid rounded" src=/images/profile_picture.jpeg width=200px height=200px alt="blog">
+      </a>
+    </div>
+  <div class="col-sm-8">
+    <h1 class="title"><a href="/">blog</a></h1>
+      <p class="text-muted">A low effort blog</p>
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="/">Blog</a></li>
+          <li class="list-inline-item"><a href="/#">Resume</a></li>
+              <li class="list-inline-item text-muted">|</li>
+            <li class="list-inline-item"><a href="/pages/authors/akshay-dadwal.html">About</a></li>
+      </ul>
+  </div>
+</div>    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>  How to start Your own Blog!
+</h1>
+      <hr>
+  <article class="article">
+    <header>
+      <ul class="list-inline">
+        <li class="list-inline-item text-muted" title="2022-08-19T00:00:00+05:30">
+          <i class="fas fa-clock"></i>
+          Fri 19 August 2022
+        </li>
+        <li class="list-inline-item">
+          <i class="fas fa-folder-open"></i>
+          <a href="/category/tech.html">tech</a>
+        </li>
+          <li class="list-inline-item">
+            <i class="fas fa-user"></i>
+              <a href="/pages/authors/akshay-dadwal.html">Akshay Dadwal</a>          </li>
+          <li class="list-inline-item">
+            <i class="fas fa-tag"></i>
+              <a href="/tag/python.html">#python</a>,               <a href="/tag/pelican.html">#pelican</a>,               <a href="/tag/github.html">#github</a>,               <a href="/tag/guide.html">#guide</a>          </li>
+      </ul>
+    </header>
+    <div class="content">
+      <h2>Introduction</h2>
+<p>I've been wanting to write Tech Blogs from a long time, but it always felt like
+a lot of effort.
+I would have to work with HTML and CSS, copying some template wouldn't have
+solved my problem asbeing a Backend developer who can't center a &lt;div&gt;, it is
+still a nightmare.</p>
+<p>On top of this, I would need a cheap and decent Domain name which is nearly
+impossible these days and hosting a Blog Web Application on Cloud Server would
+also incur some cost.</p>
+<p>Hence, while searching for some alternatives I got to know about some popular
+static-site generators like Jekyll, Hugo and Pelican.
+I decided to use Pelican as it's written in Python along with GitHub pages to
+avoid maintainence and cost of Cloud Server.</p>
+<p>Later in this article, We'll discuss Pelican in detail and go through a
+step-by-step guide to Build and Host static-site Blog like this one.</p>
+<hr>
+<h2>What is Pelican?</h2>
+<p>Pelican is a static-site generator, written in Python and comes with a default
+theme suitable for Blogging site.
+It also have a variety of communite designed themes, one can choose as per their
+preference.</p>
+<p>Pelican allows you to write articles in Markdown and generates respective
+HTML pages for content, it handles routing to create internal references of
+Categories, Tags and Other articles.</p>
+<h2>What is GitHub pages?</h2>
+<p>GitHub Pages are public web pages for Users, Organizations, and Repositories,
+that are freely hosted on GitHub's github.io domain or on a custom domain name
+of your choice.</p>
+<hr>
+<p>Now, we're familiar with Pelican and GitHub pages, let's get started with
+step-by-step guide to generate and host static-site Blog. </p>
+<h4>Setup GitHub repository</h4>
+<ul>
+<li>Create a new GitHub public repository with name <strong>&lt;username&gt;.github.io</strong></li>
+</ul>
+<h4>Setup development environment</h4>
+<ul>
+<li>Clone this repository onto local system and <code>cd</code> into it</li>
+<li>Initialize Python application with preferable dependency manager i.e. <a href="https://python-poetry.org/">poetry</a>, <a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a></li>
+<li>Install Pelican with Markdown support<ul>
+<li><code>poetry add pelican</code></li>
+<li><code>poetry add markdown</code></li>
+<li>Or refer to this <a href="https://docs.getpelican.com/en/latest/install.html">link</a>, if you're using virtualenv</li>
+</ul>
+</li>
+<li>Run <code>poetry run pelican-quickstart</code> to initialize Pelican app, it'll prompt a few questions.<ul>
+<li>Enter appropriate values, or use default value where mentinoed.</li>
+<li>Enter <code>n</code> when <code>&gt; Do you want to generate a tasks.py/Makefile to automate generation and publishing?</code> is prompted, we'll not need this.</li>
+</ul>
+</li>
+</ul>
+<h4>Pelican App structure</h4>
+<p>Let's discuss about directories and files generated during initialization of Pelican app.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">repo</span><span class="o">-</span><span class="nv">name</span><span class="o">/</span><span class="w"></span>
+<span class="o">|</span><span class="nv">__</span><span class="w"> </span><span class="nv">pelicanconf</span>.<span class="nv">py</span><span class="w">    </span>#<span class="w"> </span><span class="nv">Configuration</span><span class="w"> </span><span class="nv">file</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">Pelican</span><span class="w"></span>
+<span class="o">|</span><span class="nv">__</span><span class="w"> </span><span class="nv">publishconf</span>.<span class="nv">py</span><span class="w">    </span>#<span class="w"> </span><span class="nv">Ignore</span><span class="w"> </span><span class="nv">this</span><span class="w"> </span><span class="nv">file</span><span class="o">-</span><span class="w"> </span>
+<span class="o">|</span><span class="nv">__</span><span class="w"> </span><span class="nv">path</span><span class="o">-</span><span class="nv">dir</span><span class="o">-</span><span class="nv">name</span><span class="o">/</span><span class="w">    </span>#<span class="w"> </span><span class="nv">Contains</span><span class="w">  </span>#<span class="w"> </span><span class="nv">use</span><span class="w"> </span><span class="nv">this</span><span class="w"> </span><span class="nv">tuple</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">disable</span><span class="w"> </span><span class="nv">footer</span><span class="w"> </span><span class="nv">links</span>,<span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="nv">check</span><span class="w"> </span><span class="nv">header</span><span class="w"> </span><span class="nv">links</span><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="nv">referenceall</span><span class="w"> </span><span class="nv">Markdown</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">static</span><span class="w"> </span><span class="nv">files</span><span class="w"></span>
+<span class="o">|</span><span class="w">   </span><span class="o">|</span><span class="nv">__</span><span class="w"> </span><span class="nv">article</span><span class="o">-</span><span class="nv">dir</span><span class="o">-</span><span class="nv">name</span><span class="o">/</span><span class="w">    </span>#<span class="w"> </span><span class="nv">Contains</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">Markdown</span><span class="w"> </span><span class="nv">files</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">Articles</span><span class="w">  </span>
+<span class="o">|</span><span class="w">   </span><span class="o">|</span><span class="nv">__</span><span class="w"> </span><span class="nv">static</span><span class="o">-</span><span class="nv">dir</span><span class="o">-</span><span class="nv">name</span><span class="o">/</span><span class="w">    </span>#<span class="w"> </span><span class="nv">Contains</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">static</span><span class="w"> </span><span class="nv">files</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">sub</span><span class="o">-</span><span class="nv">directories</span><span class="w"></span>
+<span class="o">|</span><span class="w">   </span><span class="o">|</span><span class="nv">__</span><span class="w"> </span><span class="nv">page</span><span class="o">-</span><span class="nv">dir</span><span class="o">-</span><span class="nv">name</span><span class="o">/</span><span class="w">    </span>#<span class="w"> </span><span class="nv">Contains</span><span class="w"> </span><span class="nv">Markdown</span><span class="w"> </span><span class="nv">files</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">special</span><span class="w"> </span><span class="nv">pages</span><span class="w"></span>
+<span class="o">|</span><span class="nv">__</span><span class="w"> </span><span class="nv">docs</span><span class="o">/</span><span class="w">    </span>#<span class="w"> </span><span class="nv">Contains</span><span class="w"> </span><span class="nv">Pelican</span><span class="w"> </span><span class="nv">generated</span><span class="w"> </span><span class="nv">static</span><span class="o">-</span><span class="nv">site</span><span class="w"></span>
+</code></pre></div>
+
+<h4>Configure Pelican theme</h4>
+<p>Pelican have a wide-range of community themes and also allows you to create your own theme, we'll not discuss<br>
+<strong>How to design/create a custom Pelican theme?</strong> for some obvious reasons.<br>
+If you like themes used in this static-site, you can check it out <a href="https://github.com/nairobilug/pelican-alchemy">here</a>.</p>
+<p>Pelican themes offer several customizations i.e. custom header and footer links, routes and pagination of articles.</p>
+<ul>
+<li>
+<h5>Directories</h5>
+<ul>
+<li>PATH = "&lt;path-dir-name&gt;/"</li>
+<li>STATIC_PATHS = ["&lt;static-dir-name&gt;",]</li>
+<li>OUTPUT_PATH = "docs/"  # static-site generated here and served by github pages</li>
+</ul>
+</li>
+<li>
+<h5>Routes</h5>
+<ul>
+<li>ARTICLE_URL = "&lt;article-dir-name&gt;/{&lt;file-name&gt;}.html"</li>
+<li>ARTICLE_SAVE_AS = "&lt;article-dir-name&gt;/{&lt;file-name&gt;}.html"</li>
+<li>PAGE_URL = "&lt;page-dir-name&gt;/{&lt;file-name&gt;}.html"</li>
+<li>PAGE_SAVE_AS = "&lt;page-dir-name&gt;/{&lt;file-name&gt;}.html"</li>
+<li>CATEGORY_URL = "category/{<category-name>}.html"</li>
+<li>CATEGORY_SAVE_AS = "category/{<category-name>}.html"</li>
+</ul>
+</li>
+<li>
+<h5>Misc</h5>
+<ul>
+<li>DEFAULT_PAGINATION = &lt;int&gt;</li>
+<li>LINKS = (("Link #1", "&lt;static-route&gt;"), ("Link #2", "&lt;static-route&gt;"))  # header links</li>
+<li>FOOTER_LINKS = (("", "#"),)</li>
+<li>AUTHOR_URL = "&lt;page-dir-name&gt;/authors/{&lt;author-file-name&gt;}.html"</li>
+<li>SITEIMAGE = "&lt;static-dir-name&gt;/<file-name>.jpeg width=200px height=200px"</li>
+<li>THEME = "themes/pelican-alchemy/alchemy"</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> *_URL and *_SAVE_AS refers to static-route and absolute path where respective *.html files will be generated and stored at.</p>
+</blockquote>
+<h4>Write &amp; Publish your first Article</h4>
+<p>After doing Pelican setup and all configurations, it's time for the most important part <strong>Writing and Publishing your Articles</strong></p>
+<p>Create a new file to &lt;path-dir-name&gt;/&lt;article-dir-name&gt;/&lt;file-name&gt;.md and add this boilerplate content to it.</p>
+<div class="highlight"><pre><span></span><code><span class="n">title</span><span class="o">:</span><span class="w"> </span><span class="n">How</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span><span class="n">own</span><span class="w"> </span><span class="n">Blog</span><span class="o">!</span><span class="w"></span>
+<span class="n">date</span><span class="o">:</span><span class="w"> </span><span class="mi">2022</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">19</span><span class="w"></span>
+<span class="n">slug</span><span class="o">:</span><span class="w"> </span><span class="n">start</span><span class="o">-</span><span class="n">blog</span><span class="w"></span>
+<span class="n">author</span><span class="o">:</span><span class="w"> </span><span class="n">Akshay</span><span class="w"> </span><span class="n">Dadwal</span><span class="w"></span>
+<span class="n">summary</span><span class="o">:</span><span class="w"> </span><span class="n">Pelican</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">GitHub</span><span class="w"> </span><span class="n">pages</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">perfect</span><span class="w"> </span><span class="n">combination</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">minimal</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="kd">static</span><span class="o">-</span><span class="n">site</span><span class="w"> </span><span class="n">Blogs</span><span class="o">.</span><span class="w"></span>
+<span class="n">category</span><span class="o">:</span><span class="w"> </span><span class="n">tech</span><span class="w"></span>
+<span class="n">tags</span><span class="o">:</span><span class="w"> </span><span class="n">python</span><span class="o">,</span><span class="w"> </span><span class="n">pelican</span><span class="o">,</span><span class="w"> </span><span class="n">github</span><span class="o">,</span><span class="w"> </span><span class="n">guide</span><span class="w"></span>
+<span class="n">status</span><span class="o">:</span><span class="w"> </span><span class="n">published</span><span class="w"></span>
+</code></pre></div>
+
+<p>And that's it, you are ready to publish your first Article on your own static-site Blog.</p>
+<ul>
+<li>Run <code>poetry run pelican &lt;path-dir-name&gt;</code> to generate static-site into your OUTPUT_PATH</li>
+<li>Add and Commit generated files to local github repository and push it to remote, github pages will take some time to reflect changes(try hard-refresh if it doesn't work after some time)</li>
+<li>And voilà, you just published your first Article.</li>
+</ul>
+    </div>
+  </article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+<div class="row">
+  <ul class="col-sm-6 list-inline">
+    <li class="list-inline-item"><a href="/#"></a></li>
+  </ul>
+  <p class="col-sm-6 text-sm-right text-muted">
+    Generated by <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a>
+    / <a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+  </p>
+</div>    </div>
+  </footer>
+
+</body>
+
+</html>
