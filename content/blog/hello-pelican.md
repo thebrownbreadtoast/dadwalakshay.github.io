@@ -5,7 +5,7 @@ author: Akshay Dadwal
 summary: Pelican + GitHub pages is the perfect combination for minimal and static-site Blogs.
 category: tech
 tags: python, pelican, github, guide
-status: published
+status: hidden
 
 ## Introduction
 I've been wanting to write Tech Blogs from a long time, but it always felt like
@@ -81,7 +81,7 @@ repo-name/
 #### Configure Pelican theme
 Pelican have a wide-range of community themes and also allows you to create your own theme, we'll not discuss  
 **How to design/create a custom Pelican theme?** for some obvious reasons.  
-If you like themes used in this static-site, you can check it out [here](https://github.com/nairobilug/pelican-alchemy).
+If you like theme used in this static-site, you can check it out [here](https://github.com/nairobilug/pelican-alchemy).
 
 Pelican themes offer several customizations i.e. custom header and footer links, routes and pagination of articles.
 

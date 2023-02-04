@@ -6,9 +6,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>  How to start Your own Blog! | blog
+  <title>  SSE with Pocketbase: An on-disk realtime RDBMS | blog
 </title>
-  <link rel="canonical" href="/blog/start-blog.html">
+  <link rel="canonical" href="/blog/sse-pocketbase.html">
 
 
   <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/theme/css/oldstyle.css">
 
   
-  <meta name="description" content="Pelican + GitHub pages is the perfect combination for minimal and static-site Blogs.">
+  <meta name="description" content="A pocket friendly solution which provides realtime updates out-of-the-box.">
 
 
 </head>
@@ -47,15 +47,15 @@
 
   <div class="main">
     <div class="container">
-      <h1>  How to start Your own Blog!
+      <h1>  SSE with Pocketbase: An on-disk realtime RDBMS
 </h1>
       <hr>
   <article class="article">
     <header>
       <ul class="list-inline">
-        <li class="list-inline-item text-muted" title="2022-08-19T00:00:00+05:30">
+        <li class="list-inline-item text-muted" title="2023-02-04T00:00:00+05:30">
           <i class="fas fa-clock"></i>
-          Fri 19 August 2022
+          Sat 04 February 2023
         </li>
         <li class="list-inline-item">
           <i class="fas fa-folder-open"></i>
@@ -66,34 +66,23 @@
               <a href="/pages/authors/akshay-dadwal.html">Akshay Dadwal</a>          </li>
           <li class="list-inline-item">
             <i class="fas fa-tag"></i>
-              <a href="/tag/python.html">#python</a>,               <a href="/tag/pelican.html">#pelican</a>,               <a href="/tag/github.html">#github</a>,               <a href="/tag/guide.html">#guide</a>          </li>
+              <a href="/tag/pocketbase.html">#pocketbase</a>,               <a href="/tag/sse.html">#sse</a>,               <a href="/tag/websockets.html">#websockets</a>,               <a href="/tag/rdbms.html">#rdbms</a>,               <a href="/tag/python.html">#python</a>,               <a href="/tag/fastapi.html">#fastapi</a>          </li>
       </ul>
     </header>
     <div class="content">
       <h2>Introduction</h2>
-<p>I've been wanting to write Tech Blogs from a long time, but it always felt like
-a lot of effort.
-I would have to work with HTML and CSS, copying some template wouldn't have
-solved my problem asbeing a Backend developer who can't center a &lt;div&gt;, it is
-still a nightmare.</p>
-<p>On top of this, I would need a cheap and decent Domain name which is nearly
-impossible these days and hosting a Blog Web Application on Cloud Server would
-also incur some cost.</p>
-<p>Hence, while searching for some alternatives I got to know about some popular
-static-site generators like Jekyll, Hugo and Pelican.
-I decided to use Pelican as it's written in Python along with GitHub pages to
-avoid maintainence and cost of Cloud Server.</p>
-<p>Later in this article, We'll discuss Pelican in detail and go through a
-step-by-step guide to Build and Host static-site Blog like this one.</p>
+<p>Building an application which needs realtime Databaes updates or certain events that
+happens in the Backend, can be a complex job.</p>
+<p>For example, a Stock market ticker dashboard which needs to serve thousands of concurrent
+connections or a client app which awaits acknowledgement from Payment gateway.</p>
+<p>Such problem statements which requires 1-way communication from Backend servers
+to Client application, can be solved with Websockets and SSE(Server Sent Events).</p>
+<p>Websockets have become a defacto solution for realtime connections, but for the
+problem statements we discussed earlier it would be an overkill. Hence, we would
+be discussing SSE and see how <strong>Pocketbase</strong> comes into play.</p>
 <hr>
-<h2>What is Pelican?</h2>
-<p>Pelican is a static-site generator, written in Python and comes with a default
-theme suitable for Blogging site.
-It also have a variety of communite designed themes, one can choose as per their
-preference.</p>
-<p>Pelican allows you to write articles in Markdown and generates respective
-HTML pages for content, it handles routing to create internal references of
-Categories, Tags and Other articles.</p>
+<h2>What are Server Sent Events?</h2>
+<p><img alt="SSE architecture diagram" src="sse_pocketbase.drawio.png" title="SSE Architecture Diagram"></p>
 <h2>What is GitHub pages?</h2>
 <p>GitHub Pages are public web pages for Users, Organizations, and Repositories,
 that are freely hosted on GitHub's github.io domain or on a custom domain name
@@ -136,7 +125,7 @@ step-by-step guide to generate and host static-site Blog. </p>
 <h4>Configure Pelican theme</h4>
 <p>Pelican have a wide-range of community themes and also allows you to create your own theme, we'll not discuss<br>
 <strong>How to design/create a custom Pelican theme?</strong> for some obvious reasons.<br>
-If you like theme used in this static-site, you can check it out <a href="https://github.com/nairobilug/pelican-alchemy">here</a>.</p>
+If you like themes used in this static-site, you can check it out <a href="https://github.com/nairobilug/pelican-alchemy">here</a>.</p>
 <p>Pelican themes offer several customizations i.e. custom header and footer links, routes and pagination of articles.</p>
 <ul>
 <li>
@@ -183,7 +172,7 @@ If you like theme used in this static-site, you can check it out <a href="https:
 <span class="n">summary</span><span class="o">:</span><span class="w"> </span><span class="n">Pelican</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">GitHub</span><span class="w"> </span><span class="n">pages</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">perfect</span><span class="w"> </span><span class="n">combination</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">minimal</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="kd">static</span><span class="o">-</span><span class="n">site</span><span class="w"> </span><span class="n">Blogs</span><span class="o">.</span><span class="w"></span>
 <span class="n">category</span><span class="o">:</span><span class="w"> </span><span class="n">tech</span><span class="w"></span>
 <span class="n">tags</span><span class="o">:</span><span class="w"> </span><span class="n">python</span><span class="o">,</span><span class="w"> </span><span class="n">pelican</span><span class="o">,</span><span class="w"> </span><span class="n">github</span><span class="o">,</span><span class="w"> </span><span class="n">guide</span><span class="w"></span>
-<span class="n">status</span><span class="o">:</span><span class="w"> </span><span class="n">published</span><span class="w"></span>
+<span class="n">status</span><span class="o">:</span><span class="w"> </span><span class="n">hidden</span><span class="w"></span>
 </code></pre></div>
 
 <p>And that's it, you are ready to publish your first Article on your own static-site Blog.</p>
