@@ -5,7 +5,7 @@ author: Akshay Dadwal
 summary: Pelican + GitHub pages is the perfect combination for minimal and static-site Blogs.
 category: tech
 tags: python, pelican, github, guide
-status: hidden
+status: draft
 
 ## Introduction
 I've been wanting to write Tech Blogs from a long time, but it always felt like

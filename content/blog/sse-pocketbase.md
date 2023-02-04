@@ -4,7 +4,7 @@ slug: sse-pocketbase
 author: Akshay Dadwal
 summary: A pocket friendly solution which provides realtime updates out-of-the-box.
 category: tech
-tags: pocketbase, sse, websockets, rdbms, python, fastapi
+tags: pocketbase, sse, websockets, python, fastapi
 status: published
 
 ## Introduction
@@ -23,4 +23,4 @@ be discussing SSE and see how **Pocketbase** comes into play.
 
 --------------------------------------------------------------------------------
 ## What are Server Sent Events?
-![SSE architecture diagram](sse_pocketbase.drawio.png "SSE Architecture Diagram")
+![SSE architecture diagram]({static}/images/sse_pocketbase.drawio.png)
